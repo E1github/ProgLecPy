@@ -34,6 +34,16 @@ def check_predicate(s):
 
 print(f"It's {check_predicate(input_nums(3))}!")
 
+
+# вариант 2
+for x in [True, False]:
+    for y in [True, False]:
+        for z in [True, False]:
+            print(f' X = {x}, Y = {y}, Z = {z}. Result = {not( x or y or z) == (not x and not y and not z)}.')
+            
+
+
+
 # 3. Напишите программу, которая принимает на вход координаты точки (X и Y), причём X ≠ 0 и Y ≠ 0 и выдаёт номер четверти плоскости, в которой находится эта точка (или на какой оси она находится).
    
 #     *Пример:*
@@ -97,3 +107,11 @@ def lenghts2points(a,b):
     return len
 
 print(f"Lenghts = {lenghts2points(input_nums(2),input_nums(2))}")
+
+# вариант 2
+import math
+
+x1, y1 = list(map(int, input('input coords(x1 y1) for first point separated by space - ').split()))
+x2, y2 = list(map(int, input('input coords(x2 y2) for first points separated by space - ').split()))
+
+print(round(math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2), 3))
