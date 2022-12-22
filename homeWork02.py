@@ -63,11 +63,11 @@ with open("file.txt", "r") as file:
 digs_list = [int(i) for i in digs]
 print(digs_list)
 
-sum_from_file = 0
+mult_from_file = 1
 for i in range(len(pos_list)):
-    sum_from_file += digs_list[pos_list[i]]
+    mult_from_file *= digs_list[pos_list[i]]
 
-print(f'Sum digits from file.txt: {sum_from_file}')
+print(f'Product digits from file.txt: {mult_from_file}')
 
 # 5 Реализуйте алгоритм перемешивания списка.
 
