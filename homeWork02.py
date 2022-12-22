@@ -69,6 +69,28 @@ for i in range(len(pos_list)):
 
 print(f'Product digits from file.txt: {mult_from_file}')
 
+# после разбора домашки на семинаре я понял, что условие .... не совсем (ТЗ) корректно озвучено
+# и если нужно посчитать произведения чисел (из созданного списка) на позициях указанных в файле
+import random
+
+my_num = int(input('Input number: '))
+
+num_list = []
+if my_num > 1: 
+    for i in range(my_num+1):    
+        num_list.append(random.randint(-my_num,my_num))
+print(num_list)
+
+with open("file1.txt", "r") as file1:
+    list_pos_digs = file1.readlines()
+    
+mult_list = 1    
+for pos in list_pos_digs:    
+    if int(pos) < my_num:
+        mult_list *= num_list[int(pos)]
+        
+print(f'Product digits from file.txt: {mult_list}')
+
 # 5 Реализуйте алгоритм перемешивания списка.
 
 import random
@@ -79,7 +101,7 @@ def rndmz_list(def_list):
         new_rnd = random.randint(0,len(def_list)-1)
         if new_rnd not in rnd_pos_list:
             rnd_pos_list.append(new_rnd)
-    print(rnd_pos_list)        
+    print(f'  Randomize matrix: {rnd_pos_list}')        
     
     new_def_list = []
     for i in range(len(def_list)):
@@ -88,6 +110,6 @@ def rndmz_list(def_list):
 
 lenght_list = 5
 my_list = [random.randint(10,100) for i in range(lenght_list)]
-print(my_list)
-print(rndmz_list(my_list))
+print(f' Original list  : {my_list}')
+print(f' Randomized list: {rndmz_list(my_list)}')
 

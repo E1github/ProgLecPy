@@ -24,15 +24,22 @@ import math
 
 # *Пример:*
 # - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
-def fib(n):
-    fib_list = [0]
-    x, y = 0, 1
-    for i in range(n):
-        x, y = y, x + y
-        fib_list.append(x)
-        fib_list.insert(0, -x if i %2 else x)
-    return fib_list
+my_num = int(input('Input number: '))
 
-fib_num = int(input('Input number: '))
-print(f'для k = {fib_num} список будет выглядеть так: {fib(fib_num)}')
+num_list = []
+if my_num > 1: 
+    for i in range(my_num+1):    
+        num_list.append(random.randint(-my_num,my_num))
+print(num_list)
 
+with open("file1.txt", "r") as file1:
+    list_pos_digs = file1.readlines()
+    
+mult_list = 1    
+for pos in list_pos_digs:    
+    if int(pos) < my_num:
+        mult_list *= num_list[int(pos)]
+        
+print(f'Product digits from file.txt: {mult_list}')
+
+    
