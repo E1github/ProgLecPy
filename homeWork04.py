@@ -19,7 +19,7 @@ def is_simple_number(num) -> bool:
     return is_simple
 
 num10 = int(input('Input number: '))
-simple_mult_list = [int(i) for i in range(2,num10) if is_simple_number(i)] #список простых чисел со второго ибо 1 не надо
+simple_mult_list = [int(i) for i in range(1,num10) if is_simple_number(i)] #список простых чисел со второго ибо 1 не надо
 mult = [[simple_mult_list[i], "x "+str(num10 // simple_mult_list[i])] for i in range(len(simple_mult_list)) if num10 % simple_mult_list[i] == 0]
 print(f'\n Simple multiplires for {num10} is: {mult}') # 1271 9999
 
