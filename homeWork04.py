@@ -55,19 +55,19 @@ print(list_work)
 # - k=2 => 2*x² + 4*x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 import random
 
-k = int(input('Input K: '))
+sum = int(input('Input K: '))
 
-print(f'k = {k} -> ', end = '')
+print(f'k = {sum} -> ', end = '')
 null_elems = 0
-for i in range(k,-1,-1):    
+for i in range(sum,-1,-1):    
     num = random.randint(0,100)
     
     if num == 0: #проверка на необходимость знака '+' при пустых первых значениях
         null_elems += 1
         continue
-    plus = ' + ' if k - null_elems != i else ''
+    plus = ' + ' if sum - null_elems != i else ''
         
-    if i == k:
+    if i == sum:
         print(f'{num}*x^{i}', end = '')
     elif i != 0: 
         print(f'{plus}{num}*x^{i}', end = '')
@@ -104,12 +104,12 @@ max_k = int(expr1[0][1]) if int(expr1[0][1]) > int(expr2[0][1]) else int(expr2[0
 flag = False #сложение и вывод, флаг определения первого элемента для корректного отображения
 sum_expr = expr1 + expr2
 for i in range(max_k,-1,-1):
-    k = 0
+    sum = 0
     for j in range(len(sum_expr)):
         if i == int(sum_expr[j][1]):
-            k += int(sum_expr[j][0])      
-    if k != 0:
-        plus = ' - ' if k < 0 else ' + ' if flag else ''
-        print(f'{plus}{abs(k)}*x^{i}', end = '')
+            sum += int(sum_expr[j][0])      
+    if sum != 0:
+        plus = ' - ' if sum < 0 else ' + ' if flag else ''
+        print(f'{plus}{abs(sum)}*x^{i}', end = '')
         flag = True
 print(' = 0')                
