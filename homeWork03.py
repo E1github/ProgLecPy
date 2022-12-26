@@ -24,7 +24,7 @@ my_list = [random.randint(0,10) for i in range(lenght_list)]
 my_odd_list = [my_list[i] for i in range(lenght_list) if i % 2 != 0] 
 # my_list = [6, 10, 4, 10, 9]
 print(f'{my_list} -> на нечётных позициях элементы {my_odd_list}, ответ: {sum_odd_elem_inlist(my_list)}')
-
+      
 
 # 2 Напишите программу, которая найдёт произведение пар чисел списка. Парой считаем первый и последний элемент, второй и предпоследний и т.д.
 
@@ -43,6 +43,23 @@ my_multi_list = [my_1st_list[i] * my_2nd_list[i] for i in range(lenght_list // 2
 if lenght_list % 2 != 0:
     my_multi_list.append(my_list[lenght_list % 2 + 1] ** 2)
 print(f'{my_list} -> {my_multi_list}')
+# второе решение
+def sum_of_pare(array: list[int]) -> list[int]:
+    """
+    get list of integer digits and return new list with
+    multiplication of elements with elements that has negative some indexes
+    :param array: list
+    :return: new list
+    """
+    accumulator = []
+    for i in range(int(len(array) // 2 + len(array) % 2)): #ceil - округляет вверх
+        accumulator.append(array[i] * array[-(i + 1)])
+    return accumulator
+
+
+print(sum_of_pare([2, 3, 4, 5, 6]))
+print(sum_of_pare([2, 3, 5, 6]))
+
 
 # 3 Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между максимальным 
 # и минимальным значением дробной части элементов.
@@ -55,11 +72,9 @@ import math
 
 lenght_list = 5
 my_list = [round(random.randint(100,1000)/100,2) for i in range(lenght_list)]
-
-# my_list = [1.1, 1.2, 3.1, 5, 10.01]
+my_list = [1.1, 1.2, 3.1, 5, 10.01]
 my_tail_list = [round(my_list[i]-int(my_list[i]),2) for i in range(lenght_list)] #для случая когда мы все же учитываем, что целое число имеет 0 на конце
 # print(f'{my_list} -> {my_tail_list} -> {max(my_tail_list) - min(my_tail_list)}')
-
 my_shorttail_list= []
 for i in range(lenght_list):
     if my_tail_list[i]:
@@ -85,7 +100,7 @@ num10 = int(input('Input number: '))
 delta_num10 = num10
 num2str = ''
 while delta_num10 > 0:
-    num2str = str(delta_num10 % 2) + num2str
+    num2str += str(delta_num10 % 2)
     delta_num10 = delta_num10 // 2
 print(f'{num10} -> {num2str}')
 

@@ -12,34 +12,59 @@
 
 # почему isdigit не работает с точкой? признает ее за число и соответсвенно передает в данном коде?
 # по тому, что нету скобок! чем отличается вызов со скоблками от вызова без скобок?
-# my_list_for_count = [int(i) for i in my_str if i.isdigit]
+# my_str = input('Input number: ')
+# my_list_for_count = [int(i) for i in my_str if i.isdigit()]
+# # my_list_for_count = [int(i) for i in my_str if i in '123456789']
+# print(f'{my_str} -> {sum(my_list_for_count)}')
 
+# list_originals = []
+# list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
+# for i in list_work:
+#     if i not in list_originals:
+#         list_originals.append(i)        
+# print(list_originals)
+ # for j1 in range(len(expr1)):
+    #     if i == int(expr1[j1][1]):
+    #         k1 = int(expr1[j1][0])
+    # for j2 in range(len(expr2)):
+    #     if i == int(expr2[j2][1]):
+            # k2 = int(expr2[j2][0])
+# if int(expr_def_el[len(expr_def_el)-1]) > 0:
+    #     expr_el_matrix.append(expr_def_el[len(expr_def_el)-1])
+    
 import random
 import math
+import re
 
-# def diff_max_min(def_list):
-#     min_el, max_el = def_list[0]
-#     for i in range(1,len(def_list)):
-#         if min_el
-
-# *Пример:*
-# - для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21] 
-my_num = int(input('Input number: '))
-
-num_list = []
-if my_num > 1: 
-    for i in range(my_num+1):    
-        num_list.append(random.randint(-my_num,my_num))
-print(num_list)
-
-with open("file1.txt", "r") as file1:
-    list_pos_digs = file1.readlines()
+# 5 Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
     
-mult_list = 1    
-for pos in list_pos_digs:    
-    if int(pos) < my_num:
-        mult_list *= num_list[int(pos)]
+def file2list(filename):
+    with open(filename, "r") as file_def:
+        expr_def = file_def.readlines()
+    print(expr_def)    
+    expr_def[0] = expr_def[0].replace('+ ', '') #приводим строку удобному виду для распарсинга
+    expr_def[0] = expr_def[0].replace('- ', '-')
+    expr_def_el = re.split(r"\s=\s|\s", expr_def[0])
+    expr_el_matrix = []    
+    for i in range(len(expr_def_el)-1): #парсим и сохраняем, последнее значение после причесывания всегда 0 - откидываем 
+        expr_el_matrix.append(re.split(r"\*x\^", expr_def_el[i]))    
+    return expr_el_matrix
+    
+expr1 = file2list("hw4e5_1.txt")   
+expr2 = file2list("hw4e5_2.txt")        
+max_k = int(expr1[0][1]) if int(expr1[0][1]) > int(expr2[0][1]) else int(expr2[0][1])
+
+flag = False #сложение и вывод, флаг для определения первого элемента
+sum_expr = expr1 + expr2
+for i in range(max_k,-1,-1):
+    k = 0
+    for j in range(len(sum_expr)):
+        if i == int(sum_expr[j][1]):
+            k += int(sum_expr[j][0])      
+    if k != 0:
+        plus = ' - ' if k < 0 else ' + ' if flag else ''
+        print(f'{plus}{abs(k)}*x^{i}', end = '')
+        flag = True
+print(' = 0')                
         
-print(f'Product digits from file.txt: {mult_list}')
 
-    
