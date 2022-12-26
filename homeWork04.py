@@ -30,13 +30,22 @@ import random
 list_originals = []
 list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
 for i in range(15):
-    list_work.append(random.randint(0,6))
+    list_work.append(random.randint(0,7))
 
+#не совсем конкретное задание ...
 for i in list_work:
     if i not in list_originals:
         list_originals.append(i)
-print(list_work)        
+print(list_work)
+#если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
 print(list_originals)
+
+#если нужно вывести только неповторяющиеся значения, т.е. исключить те, что повторялись
+for i in list_originals:
+    if list_work.count(list_originals[i]) > 1:
+        while list_work.count(list_originals[i]) > 0:
+            list_work.pop(list_work.index(list_originals[i]))
+print(list_work)        
         
 
 # 4 Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) многочлена и записать 

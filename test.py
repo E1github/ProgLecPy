@@ -36,35 +36,25 @@ import random
 import math
 import re
 
-# 5 Даны два файла, в каждом из которых находится запись многочлена. Задача - сформировать файл, содержащий сумму многочленов.
-    
-def file2list(filename):
-    with open(filename, "r") as file_def:
-        expr_def = file_def.readlines()
-    print(expr_def)    
-    expr_def[0] = expr_def[0].replace('+ ', '') #приводим строку удобному виду для распарсинга
-    expr_def[0] = expr_def[0].replace('- ', '-')
-    expr_def_el = re.split(r"\s=\s|\s", expr_def[0])
-    expr_el_matrix = []    
-    for i in range(len(expr_def_el)-1): #парсим и сохраняем, последнее значение после причесывания всегда 0 - откидываем 
-        expr_el_matrix.append(re.split(r"\*x\^", expr_def_el[i]))    
-    return expr_el_matrix
-    
-expr1 = file2list("hw4e5_1.txt")   
-expr2 = file2list("hw4e5_2.txt")        
-max_k = int(expr1[0][1]) if int(expr1[0][1]) > int(expr2[0][1]) else int(expr2[0][1])
+import random
 
-flag = False #сложение и вывод, флаг для определения первого элемента
-sum_expr = expr1 + expr2
-for i in range(max_k,-1,-1):
-    k = 0
-    for j in range(len(sum_expr)):
-        if i == int(sum_expr[j][1]):
-            k += int(sum_expr[j][0])      
-    if k != 0:
-        plus = ' - ' if k < 0 else ' + ' if flag else ''
-        print(f'{plus}{abs(k)}*x^{i}', end = '')
-        flag = True
-print(' = 0')                
-        
+list_originals = []
+list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
+for i in range(15):
+    list_work.append(random.randint(0,7))
+
+#не совсем конкретное задание ...
+for i in list_work:
+    if i not in list_originals:
+        list_originals.append(i)
+print(list_work)
+#если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
+print(list_originals)
+
+#если нужно вывести только неповторяющиеся значения, т.е. исключить то, что повторялись
+for i in list_originals:
+    if list_work.count(list_originals[i]) > 1:
+        while list_work.count(list_originals[i]) > 0:
+            list_work.pop(list_work.index(list_originals[i]))
+print(list_work)        
 
