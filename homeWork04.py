@@ -113,6 +113,7 @@ max_k = int(expr1[0][1]) if int(expr1[0][1]) > int(expr2[0][1]) else int(expr2[0
 
 flag = False #сложение и вывод, флаг определения первого элемента для корректного отображения
 sum_expr = expr1 + expr2
+result_expr = ''
 for i in range(max_k,-1,-1):
     sum = 0
     for j in range(len(sum_expr)):
@@ -120,6 +121,11 @@ for i in range(max_k,-1,-1):
             sum += int(sum_expr[j][0])      
     if sum != 0:
         plus = ' - ' if sum < 0 else ' + ' if flag else ''
-        print(f'{plus}{abs(sum)}*x^{i}', end = '')
+        result_expr += str(plus)+str(abs(sum))+'*x^'+str(i)
+        # print(f'{plus}{abs(sum)}*x^{i}', end = '')
         flag = True
-print(' = 0')                
+        
+result_expr += ' = 0'        
+print(result_expr) 
+with open("hw4e5_res.txt", "w") as file:
+    file.write(result_expr)

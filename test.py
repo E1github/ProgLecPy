@@ -58,10 +58,38 @@ import re
 #             list_work.pop(list_work.index(list_originals[i]))
 # print(list_work)        
 
-# print(99999999*math.sin(math.radians(180/99999999)))
-print(round(99999999*math.sin(math.radians(180/99999999)), 6))
-pi_calc, multiplier = 0, -1
-for i in range(1,99000000,2):
-    multiplier *= -1
-    pi_calc += multiplier*4/i
-print(pi_calc)
+def file2list(filename):
+    with open(filename, "r") as file_def:
+        expr_def = file_def.readlines()
+    print(expr_def)    
+    expr_def[0] = expr_def[0].replace('+ ', '') #приводим строку к удобному виду для распарсинга
+    expr_def[0] = expr_def[0].replace('- ', '-')
+    expr_def_el = re.split(r"\s=\s|\s", expr_def[0]) 
+    expr_el_matrix = []    
+    for i in range(len(expr_def_el)-1): #парсим и сохраняем. последнее значение после причесывания всегда 0 - откидываем 
+        expr_el_matrix.append(re.split(r"\*x\^", expr_def_el[i]))
+    #при необходимости можно усложить парсинг для случая ввода сведений при B = 0 и 1 в более "человеческом виде"    
+    return expr_el_matrix
+    
+expr1 = file2list("hw4e5_1.txt")   
+expr2 = file2list("hw4e5_2.txt")        
+max_k = int(expr1[0][1]) if int(expr1[0][1]) > int(expr2[0][1]) else int(expr2[0][1])
+
+flag = False #сложение и вывод, флаг определения первого элемента для корректного отображения
+sum_expr = expr1 + expr2
+result_expr = ''
+for i in range(max_k,-1,-1):
+    sum = 0
+    for j in range(len(sum_expr)):
+        if i == int(sum_expr[j][1]):
+            sum += int(sum_expr[j][0])      
+    if sum != 0:
+        plus = ' - ' if sum < 0 else ' + ' if flag else ''
+        result_expr += str(plus)+str(abs(sum))+'*x^'+str(i)
+        # print(f'{plus}{abs(sum)}*x^{i}', end = '')
+        flag = True
+        
+result_expr += ' = 0'        
+print(result_expr) 
+with open("hw4e5_res.txt", "w") as file:
+    file.write(result_expr)
