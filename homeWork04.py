@@ -6,12 +6,15 @@
 # - при $d = 0.001, π = 3.141.$    $10^{-1} ≤ d ≤10^{-10}$
 
 import math
+from decimal import *
 #не совсем понятно какое число нужно вычислить, давайте вычислим длинну окружности ...
 d = 0.001
 num10 = int(input('Input precision in number of decimal places: ')) 
 print(f'Length of circle wit D = {d} is {round(d * math.pi,num10)}')
+
 #хотя, если нам нужно вычислить само число Пи..
 print(round(99999999*math.sin(math.radians(180/99999999)), num10))
+
 #или через лейбница, но через синус точнее, при одинаковой загрузке на ЦП
 pi_calc, multiplier = 0, -1
 for i in range(1,99000000,2):
@@ -19,6 +22,16 @@ for i in range(1,99000000,2):
     pi_calc += multiplier*4/i
 print(round(pi_calc,num10))
 
+#а может быть имелась ввиду работа с модулем decimal ...
+
+print('=with Decimal=')
+print(f'Length of circle wit D = {d} is {round(Decimal(d * math.pi),num10)}')
+print(round(Decimal(99999999*math.sin(math.radians(180/99999999))), num10))
+pi_calc, multiplier = 0, -1
+for i in range(1,99000000,2):
+    multiplier *= -1
+    pi_calc += multiplier*Decimal(4/i)
+print(round(pi_calc,num10))
 
 # 2 Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 
@@ -50,7 +63,7 @@ print(list_work)
 #если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
 print(list_originals)
 
-#если нужно вывести только неповторяющиеся значения, т.е. исключить те, что повторялись
+#если нужно вывести только неповторяющиеся значения, т.е. исключить полностью те числа, что повторялись
 for i in list_originals:
     if list_work.count(list_originals[i]) > 1:
         while list_work.count(list_originals[i]) > 0:
