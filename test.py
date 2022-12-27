@@ -36,25 +36,32 @@ import random
 import math
 import re
 
-import random
+# import random
 
-list_originals = []
-list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
-for i in range(15):
-    list_work.append(random.randint(0,7))
+# list_originals = []
+# list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
+# for i in range(15):
+#     list_work.append(random.randint(0,7))
 
-#не совсем конкретное задание ...
-for i in list_work:
-    if i not in list_originals:
-        list_originals.append(i)
-print(list_work)
-#если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
-print(list_originals)
+# #не совсем конкретное задание ...
+# for i in list_work:
+#     if i not in list_originals:
+#         list_originals.append(i)
+# print(list_work)
+# #если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
+# print(list_originals)
 
-#если нужно вывести только неповторяющиеся значения, т.е. исключить то, что повторялись
-for i in list_originals:
-    if list_work.count(list_originals[i]) > 1:
-        while list_work.count(list_originals[i]) > 0:
-            list_work.pop(list_work.index(list_originals[i]))
-print(list_work)        
+# #если нужно вывести только неповторяющиеся значения, т.е. исключить то, что повторялись
+# for i in list_originals:
+#     if list_work.count(list_originals[i]) > 1:
+#         while list_work.count(list_originals[i]) > 0:
+#             list_work.pop(list_work.index(list_originals[i]))
+# print(list_work)        
 
+# print(99999999*math.sin(math.radians(180/99999999)))
+print(round(99999999*math.sin(math.radians(180/99999999)), 6))
+pi_calc, multiplier = 0, -1
+for i in range(1,99000000,2):
+    multiplier *= -1
+    pi_calc += multiplier*4/i
+print(pi_calc)
