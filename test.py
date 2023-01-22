@@ -36,52 +36,57 @@ import random
 import math
 import re
 
-# import random
+# users = ['user1', 'user2', 'user3', 'user4', 'user5']
+# ids = [4, 5, 9, 114, 7]
+# salary = [111, 222, 333]
 
-# list_originals = []
-# list_work = [1, 1, 0 , 2, 3, 4, 4, 5, 6 ]
-# for i in range(15):
-#     list_work.append(random.randint(0,7))
+# data = list(zip(users, ids, salary))
+# print(data)
 
-# #не совсем конкретное задание ...
-# for i in list_work:
-#     if i not in list_originals:
-#         list_originals.append(i)
-# print(list_work)
-# #если нужно вывести только неповторяющиеся значения, т.е. без дубликатов        
-# print(list_originals)
 
-# #если нужно вывести только неповторяющиеся значения, т.е. исключить то, что повторялись
-# for i in list_originals:
-#     if list_work.count(list_originals[i]) > 1:
-#         while list_work.count(list_originals[i]) > 0:
-#             list_work.pop(list_work.index(list_originals[i]))
-# print(list_work)        
+def print_gf(data_local):
+    print(' ----------------- ')
+    print(f'|  {data_local[1]}  |  {data_local[2]}  |  {data_local[3]}  |')
+    print(' ----------------- ')
+    print(f'|  {data_local[4]}  |  {data_local[5]}  |  {data_local[6]}  |')
+    print(' ----------------- ')
+    print(f'|  {data_local[7]}  |  {data_local[8]}  |  {data_local[9]}  |')
+    print(' ----------------- ')
 
-import math
-from decimal import *
-#не совсем понятно какое число нужно вычислить, давайте вычислим длинну окружности ...
-d = 0.001
-num10 = int(input('Input precision in number of decimal places: ')) 
-print(f'Length of circle wit D = {d} is {round(d * math.pi,num10)}')
+def user_turn(mark, data_local):
+    print(f'Ход за {mark} ', end=': ')
+    data_user = str(input())
+    while data_user not in dict.values(data_local):
+        print(f'Это поле уже занято, введите другой номер ', end=': ')
+        data_user = input()
+    data_local[int(data_user)] = mark
 
-#хотя, если нам нужно вычислить само число Пи..
-print(round(99999999*math.sin(math.radians(180/99999999)), num10))
+def check_end_game(positions):
+    for i in 1, 2, 3:
+        if positions[i] == positions[i + 3] == positions[i + 6]:
+            return positions[i]
+    for i in 1, 4, 7:
+        if positions[i] == positions[i + 1] == positions[i + 2]:
+            return positions[i]
+    if positions[1] == positions[2] == positions[9]:
+        return positions[1]
+    if positions[3] == positions[5] == positions[7]:
+        return positions[3]
+    return False
 
-#или через лейбница, но через синус точнее, при одинаковой загрузке на ЦП
-pi_calc, multiplier = 0, -1
-for i in range(1,99000000,2):
-    multiplier *= -1
-    pi_calc += multiplier*4/i
-print(round(pi_calc,num10))
+flag = 'X'
+data = {1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9'}
+end_game = False
+print_gf(data)
 
-#а может быть имелась ввиду работа с модулем decimal ...
-
-print('with Decimal')
-print(f'Length of circle wit D = {d} is {round(Decimal(d * math.pi),num10)}')
-print(round(Decimal(99999999*math.sin(math.radians(180/99999999))), num10))
-pi_calc, multiplier = 0, -1
-for i in range(1,99000000,2):
-    multiplier *= -1
-    pi_calc += multiplier*Decimal(4/i)
-print(round(pi_calc,num10))
+for turns in range(9):
+    user_turn(flag, data)
+    print_gf(data)
+    end_game = check_end_game(data)
+    if not end_game:
+        flag = '0' if flag == 'X' else 'X'
+    else:
+        print(f'Победил {flag}! ')
+else:
+    print('Победила дружба!')
+    

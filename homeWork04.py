@@ -42,9 +42,37 @@ def is_simple_number(num) -> bool:
     return is_simple
 
 num10 = int(input('Input number: '))
-simple_mult_list = [int(i) for i in range(1,num10) if is_simple_number(i)] #список простых чисел со второго ибо 1 не надо
+simple_mult_list = [int(i) for i in range(1,int(num10**0.5)+1) if is_simple_number(i)] #список простых чисел со второго ибо 1 не надо
 mult = [[simple_mult_list[i], "x "+str(num10 // simple_mult_list[i])] for i in range(len(simple_mult_list)) if num10 % simple_mult_list[i] == 0]
 print(f'\n Simple multiplires for {num10} is: {mult}') # 1271 9999
+
+
+# from random import randint
+
+# def prime_factors(temp: int) -> list:
+#     result = []
+#     while temp > 1:
+#         for i in range(2, int(temp ** 0.5) + 1):
+#             if not temp % i:
+#                 temp //= i
+#                 if not i in result:
+#                     result.append(i)
+#                 break
+#         else: 
+#             # if not (temp in result):
+#             result.append(temp)
+#             temp = 1
+#     return result
+
+
+# def main():
+#     number = 1123
+#     print(f'Простые множители числа {number}: {prime_factors(number)}')
+
+
+# if __name__ == '__main__':
+#     main()
+
 
  
 # 3 Задайте последовательность чисел. Напишите программу, которая выведет список неповторяющихся элементов исходной последовательности.
@@ -69,6 +97,12 @@ for i in list_originals:
         while list_work.count(list_originals[i]) > 0:
             list_work.pop(list_work.index(list_originals[i]))
 print(list_work)        
+
+#вариант2       
+my_list = [1, 2, 3, 5, 1, 5, 3, 10]
+print(my_list)
+my_set = list(set(my_list))
+print(my_set)
         
 
 # 4 Задана натуральная степень k. Сформировать случайным образом список коэффициентов (значения от 0 до 100) многочлена и записать 
