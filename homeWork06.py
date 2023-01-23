@@ -51,7 +51,5 @@ print (f'Для n = {my_num}: {my_list}')
 #возможно в задаче на импорт телефонного справочника пригодится - типа
 contacts = ['contact1', 'contact2', 'contact3', 'contact4', 'contact5']
 phones = [444444, 55555, 99999, 11111, 77777]
-
-
 data = list(zip(contacts, phones))
 print(data)
