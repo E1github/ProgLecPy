@@ -41,11 +41,6 @@ for n in range(4,len(num_list)):
             if len(order_list) == n:
                 print(order_list, end=' ')
                 break
-       
-my_list = [1, 2, 3, 5, 1, 5, 3, 10]
-print(my_list)
-my_set = list(set(my_list))
-print(my_set)
 
 # 38. Напишите программу, удаляющую из текста все слова, содержащие "абв".
 
