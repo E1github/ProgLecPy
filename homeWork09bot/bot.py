@@ -16,27 +16,27 @@ async def my_calc(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # await update.message.reply_text(func.calc(text))
     await update.message.reply_text(mr.get_result(my_list))
     
-async def my_tictactoe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    app.add_handler(CallbackQueryHandler(ttt.button))  # добавление обработчика на CallBack кнопки
-    ttt.game
+# async def my_tictactoe(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+#     app.add_handler(CallbackQueryHandler(ttt.button))  # добавление обработчика на CallBack кнопки
+#     ttt.newGame
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Сообщение о функциональности бота с командами."""
+    # Сообщение о функциональности бота с командами
     await update.message.reply_text("Это бот позволяет играть в крестики-нолики, считать на калькуляторе и вести базу школьников.")
     await update.message.reply_text("Для игры в крестики-нолики введите /tictactoe,\nподсчетов на калькуляторе /calc, \nведения базы телефонов /phones.")
     
 async def calc_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Функция для работы калькутора."""
+    # Функция для работы калькутора
     await update.message.reply_text("Введи выражение для подсчета используя простые или комплексные числа (через j), операторы +,-,*,/ или скобки.")
     app.add_handler(MessageHandler(filters.TEXT, my_calc))
 
 async def tictactoe_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Функция для работы крестиков-ноликов."""
+    # Функция для работы крестиков-ноликов
     # global app
     # app.add_handler(CallbackQueryHandler(ttt.button))
-    await update.message.reply_text("Давай поиграем в крестики-нолики...")
+    await update.message.reply_text("Для старта игры в крестики-нолики набери /game")
     app.add_handler(CallbackQueryHandler(ttt.button))  # добавление обработчика на CallBack кнопки
-    ttt.game
+    app.add_handler(CommandHandler("game", ttt.newGame))
     
     # app.add_handler(MessageHandler(filters.TEXT, my_tictactoe))
     

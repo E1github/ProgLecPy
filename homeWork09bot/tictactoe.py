@@ -1,10 +1,6 @@
-# import os
-# import random
-# import sys
-
-# from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 # from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
-
+import random
 import init as ii
 
 # проверка на выигрыш
@@ -141,15 +137,6 @@ def button(update, _):
 
 
 if __name__ == '__main__':
-#     updater = Updater(getToken())  # получения токена из файла 'token.txt' и инициализация updater
 
-#     # добавление обработчиков
-#     updater.dispatcher.add_handler(CommandHandler('start', newGame))
-#     updater.dispatcher.add_handler(CommandHandler('new_game', newGame))
-#     updater.dispatcher.add_handler(CommandHandler('help', help_command))
-#     updater.dispatcher.add_handler(MessageHandler(Filters.text, help_command))  # обработчик на любое текстовое сообщение
     updater.dispatcher.add_handler(CallbackQueryHandler(button))  # добавление обработчика на CallBack кнопки
 
-#     # Запуск бота
-#     updater.start_polling()
-#     updater.idle()
