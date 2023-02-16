@@ -123,16 +123,16 @@ async def newGame(update, _):
     print('new tictactoe')
 
 
-def button(update, _):
+async def button(update, _):
     query = update.callback_query
     callbackData = query.data  # получение callbackData, скрытых в кнопке
 
     message, callbackData, alert = game(callbackData)  # игра
     if alert is None:  # если не получен сигнал тревоги (alert==None), то редактируем сообщение и меняем клавиатуру
-        query.answer()  # обязательно нужно что-то отправить в ответ, иначе могут возникнуть проблемы с ботом
-        query.edit_message_text(text=message, reply_markup=InlineKeyboardMarkup(getKeyboard(callbackData)))
+        await query.answer()  # обязательно нужно что-то отправить в ответ, иначе могут возникнуть проблемы с ботом
+        await query.edit_message_text(text=message, reply_markup=InlineKeyboardMarkup(getKeyboard(callbackData)))
     else:  # если получен сигнал тревоги (alert!=None), то отобразить сообщение о тревоге
-        query.answer(text=alert, show_alert=True)
+        await query.answer(text=alert, show_alert=True)
 
 
 # def help_command(update, _):
