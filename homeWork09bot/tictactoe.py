@@ -1,5 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 # from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler, MessageHandler, filters, Updater
 import random
 import init as ii
 
@@ -110,14 +111,16 @@ def getKeyboard(callBackData):
     return keyboard
 
 
-def newGame(update, _):
+async def newGame(update, _):
     # сформировать callBack данные для первой игры, то есть строку, состояющую из 9 неопределенных символов
     data = ''
     for i in range(0, 9):
         data += ii.SYMBOL_UNDEF
-
+    
     # отправить сообщение для начала игры
-    update.message.reply_text(ii.ANSW_YOUR_TURN, reply_markup=InlineKeyboardMarkup(getKeyboard(data)))
+    await update.message.reply_text(ii.ANSW_YOUR_TURN, reply_markup=InlineKeyboardMarkup(getKeyboard(data)))
+    
+    print('new tictactoe')
 
 
 def button(update, _):

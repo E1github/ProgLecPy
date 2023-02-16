@@ -32,11 +32,17 @@ async def calc_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def tictactoe_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     # Функция для работы крестиков-ноликов
-    # global app
-    # app.add_handler(CallbackQueryHandler(ttt.button))
+    
     await update.message.reply_text("Для старта игры в крестики-нолики набери /game")
     app.add_handler(CallbackQueryHandler(ttt.button))  # добавление обработчика на CallBack кнопки
+    
     app.add_handler(CommandHandler("game", ttt.newGame))
+    
+    
+    # data = ''
+    # for i in range(0, 9):
+    #     data += '◻'
+    # await update.message.reply_text('move', reply_markup=InlineKeyboardMarkup(ttt.getKeyboard(data)))
     
     # app.add_handler(MessageHandler(filters.TEXT, my_tictactoe))
     
