@@ -1,4 +1,5 @@
 import log_generate as lg
+import logging
 
 
 def calc(my_list):  # Функция решения арифметических действий
@@ -9,8 +10,12 @@ def calc(my_list):  # Функция решения арифметических
                 my_list[i - 1] = result
                 break
             elif my_list[i] == '/':
-                result = my_list.pop(i - 1) / my_list.pop(i)
-                my_list[i - 1] = result
+                try:
+                    logging.info(f"Trying divizion {my_list[i-1]} / {my_list[i+1]}.")
+                    result = my_list.pop(i - 1) / my_list.pop(i)
+                    my_list[i - 1] = result
+                except ZeroDivisionError as err:
+                    logging.error("ZeroDivisionError",exc_info=True)
                 break
 
     while '+' in my_list or '-' in my_list:

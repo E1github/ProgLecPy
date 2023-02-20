@@ -1,0 +1,123 @@
+2023-02-19 21:40:10,856 INFO An INFO
+2023-02-19 21:40:10,857 WARNING A WARNING
+2023-02-19 21:40:10,857 ERROR An ERROR
+2023-02-19 21:40:10,857 CRITICAL A message of CRITICAL severity
+2023-02-19 21:40:11,614 INFO Application started
+2023-02-19 21:40:29,491 INFO The expression from user: 123*12/55.
+2023-02-19 21:40:29,491 INFO The result from function: 26.836363636363636.
+2023-02-19 21:48:08,088 INFO Application is stopping. This might take a moment.
+2023-02-19 21:48:08,089 INFO Application.stop() complete
+2023-02-19 21:48:10,003 INFO An INFO
+2023-02-19 21:48:10,003 WARNING A WARNING
+2023-02-19 21:48:10,004 ERROR An ERROR
+2023-02-19 21:48:10,004 CRITICAL A message of CRITICAL severity
+2023-02-19 21:48:10,595 INFO Application started
+2023-02-19 21:48:24,705 INFO The expression from user: 123/12.
+2023-02-19 21:48:24,705 INFO Trying divizion 123 and /.
+2023-02-19 21:48:24,705 INFO The result from function: 10.25.
+2023-02-19 21:49:31,534 INFO Application is stopping. This might take a moment.
+2023-02-19 21:49:31,535 INFO Application.stop() complete
+2023-02-19 21:49:35,900 INFO An INFO
+2023-02-19 21:49:35,900 WARNING A WARNING
+2023-02-19 21:49:35,900 ERROR An ERROR
+2023-02-19 21:49:35,900 CRITICAL A message of CRITICAL severity
+2023-02-19 21:49:36,372 INFO Application started
+2023-02-19 21:49:52,260 INFO The expression from user: 12/2.
+2023-02-19 21:49:52,260 INFO Trying divizion 12 and 2.
+2023-02-19 21:49:52,261 INFO The result from function: 6.0.
+2023-02-19 21:50:53,310 INFO The expression from user: 321*2/(6-3-3).
+2023-02-19 21:50:53,310 INFO Trying divizion 642 and 0.
+2023-02-19 21:50:53,311 ERROR ZeroDivisionError
+Traceback (most recent call last):
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\model_racional.py", line 15, in calc
+    result = my_list.pop(i - 1) / my_list.pop(i)
+             ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~
+ZeroDivisionError: division by zero
+2023-02-19 21:54:54,772 INFO Application is stopping. This might take a moment.
+2023-02-19 21:54:57,581 ERROR Task exception was never retrieved
+future: <Task finished name='Task-8' coro=<Application._update_fetcher() done, defined at D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py:994> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 875, in __run
+    loop.run_forever()
+  File "C:\Program\Python\Python311\Lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Program\Python\Python311\Lib\asyncio\base_events.py", line 607, in run_forever
+    self._run_once()
+  File "C:\Program\Python\Python311\Lib\asyncio\base_events.py", line 1919, in _run_once
+    handle._run()
+  File "C:\Program\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1014, in _update_fetcher
+    await self.__process_update_wrapper(update)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1018, in __process_update_wrapper
+    await self.process_update(update)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1063, in process_update
+    await coroutine
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\bot.py", line 27, in my_calc
+    result = mr.get_result(my_list)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\model_racional.py", line 43, in get_result
+    data = calc(data)  # Вызов функции calc() после открытия скобок
+           ^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\model_racional.py", line 7, in calc
+    for i in range(1, len(my_list), 2):
+                      ^^^^^^^^^^^^
+KeyboardInterrupt
+2023-02-19 21:55:02,515 INFO An INFO
+2023-02-19 21:55:02,515 WARNING A WARNING
+2023-02-19 21:55:02,515 ERROR An ERROR
+2023-02-19 21:55:02,515 CRITICAL A message of CRITICAL severity
+2023-02-19 21:55:03,074 INFO Application started
+2023-02-19 21:55:30,468 INFO The expression from user: 123/2*31/(34-23)/12.
+2023-02-19 21:55:30,469 INFO Trying divizion 123 / 2.
+2023-02-19 21:55:30,469 INFO Trying divizion 1906.5 / 11.
+2023-02-19 21:55:30,469 INFO Trying divizion 173.3181818181818 / 12.
+2023-02-19 21:55:30,469 INFO The result from function: 14.443181818181818.
+2023-02-19 21:55:47,621 INFO The expression from user: /game.
+2023-02-19 21:57:14,457 INFO Application is stopping. This might take a moment.
+2023-02-19 21:57:16,945 ERROR Task exception was never retrieved
+future: <Task finished name='Task-8' coro=<Application._update_fetcher() done, defined at D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py:994> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 875, in __run
+    loop.run_forever()
+  File "C:\Program\Python\Python311\Lib\asyncio\windows_events.py", line 321, in run_forever
+    super().run_forever()
+  File "C:\Program\Python\Python311\Lib\asyncio\base_events.py", line 607, in run_forever
+    self._run_once()
+  File "C:\Program\Python\Python311\Lib\asyncio\base_events.py", line 1919, in _run_once
+    handle._run()
+  File "C:\Program\Python\Python311\Lib\asyncio\events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1014, in _update_fetcher
+    await self.__process_update_wrapper(update)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1018, in __process_update_wrapper
+    await self.process_update(update)
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_application.py", line 1063, in process_update
+    await coroutine
+  File "D:\dcmnts\prg\TestPy\homeWork09bot\2calc\Lib\site-packages\telegram\ext\_handler.py", line 141, in handle_update
+    return await self.callback(update, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\bot.py", line 27, in my_calc
+    result = mr.get_result(my_list)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\model_racional.py", line 43, in get_result
+    data = calc(data)  # Вызов функции calc() после открытия скобок
+           ^^^^^^^^^^
+  File "d:\dcmnts\prg\TestPy\homeWork09bot\model_racional.py", line 6, in calc
+    while '*' in my_list or '/' in my_list:
+                            ^^^^^^^^^^^^^^
+KeyboardInterrupt
+2023-02-19 21:58:31,382 INFO An INFO
+2023-02-19 21:58:31,382 WARNING A WARNING
+2023-02-19 21:58:31,382 ERROR An ERROR
+2023-02-19 21:58:31,382 CRITICAL A message of CRITICAL severity
+2023-02-19 21:58:31,819 INFO Application started
+2023-02-19 21:58:39,087 INFO Start TicTacToe Game.
+2023-02-19 21:58:41,824 INFO Start clicl button in TicTacToe Game.
+2023-02-19 21:58:43,843 INFO Start clicl button in TicTacToe Game.
+2023-02-19 21:58:45,660 INFO Start clicl button in TicTacToe Game.
+2023-02-19 22:00:09,686 INFO Application is stopping. This might take a moment.
+2023-02-19 22:00:09,687 INFO Application.stop() complete

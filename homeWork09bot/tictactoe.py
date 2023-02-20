@@ -2,6 +2,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 # from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, MessageHandler, Filters
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, CallbackQueryHandler, MessageHandler, filters, Updater
 import random
+import logging
 import init as ii
 
 # проверка на выигрыш
@@ -116,17 +117,17 @@ async def newGame(update, _):
     data = ''
     for i in range(0, 9):
         data += ii.SYMBOL_UNDEF
-    
+    logging.info(f"User start TicTacToe Game.")
     # отправить сообщение для начала игры
     await update.message.reply_text(ii.ANSW_YOUR_TURN, reply_markup=InlineKeyboardMarkup(getKeyboard(data)))
     
-    print('new tictactoe')
+    # print('new tictactoe')
 
 
 async def button(update, _):
     query = update.callback_query
     callbackData = query.data  # получение callbackData, скрытых в кнопке
-
+    logging.info(f"User click button in TicTacToe Game.")
     message, callbackData, alert = game(callbackData)  # игра
     if alert is None:  # если не получен сигнал тревоги (alert==None), то редактируем сообщение и меняем клавиатуру
         await query.answer()  # обязательно нужно что-то отправить в ответ, иначе могут возникнуть проблемы с ботом
@@ -135,11 +136,5 @@ async def button(update, _):
         await query.answer(text=alert, show_alert=True)
 
 
-# def help_command(update, _):
-#     update.message.reply_text(ii.ANSW_HELP)
-
-
 if __name__ == '__main__':
-
-    updater.dispatcher.add_handler(CallbackQueryHandler(button))  # добавление обработчика на CallBack кнопки
-
+    pass
